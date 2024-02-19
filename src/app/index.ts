@@ -81,7 +81,7 @@ class Rover {
 
 
 const rover = new Rover(0, 0, 'NORTH');
-console.log(rover.getStatus()); //  initial state
+console.log(rover.getStatus()); //  State de rover
 
 rover.executeCommand('avance');
 console.log(rover.getStatus()); 
