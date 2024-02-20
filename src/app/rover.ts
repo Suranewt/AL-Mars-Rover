@@ -4,6 +4,7 @@ class Rover {
     private y : number;
     private direction : String;;
     private position : String;
+    private distance : number;
 
 
     public constructor (direction : String, x : number,y : number, position : String) {
@@ -13,34 +14,34 @@ class Rover {
         this.position = position;
     }
 
-    public Avancer(direction : String, x : number,y : number) {
+    public Avancer(direction : String, x : number,y : number, distance : number) {
         if (direction === "S") {
-            y--;
+            y = y - distance;
         } else if (direction === "N") {
-            y++;
+            y = y + distance;
         } else if (direction === "E") {
-            x++;
+            x = x + distance;
         } else if (direction === "W") {
-            x--;
+            x = x - distance;
         }
 
     }
 
-    public Reculer(direction : String, x : number,y : number) {
+    public Reculer(direction : String, x : number,y : number, distance : number) {
         if (direction ===  "S") {
-            y++;
+            y = y + distance;
         } else if (direction === "N") {
-            y--;
+            y = y - distance;
         } else if (direction === "E") {
-            x--;
+            x = x - distance;
         } else if (direction === "W") {
-            x++;
+            x = x + distance;
         }
 
     }
 
 
-    private turnLeft(direction: string) {
+    public turnLeft(direction: string) {
         if (direction === "N") {
             direction = "W";
         } else if (direction === "E") {
@@ -52,7 +53,7 @@ class Rover {
         }
     }
 
-    private turnRight(direction: string) {
+    public turnRight(direction: string) {
         if (direction === "N") {
             direction = "E";
         } else if (direction === "E") {
