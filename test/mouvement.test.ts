@@ -88,4 +88,26 @@ describe('Un Rover peut avancer', () => {
              expect(roverTesté.Position).toEqual(roverTémoin.Position);
          });
      });
+     describe('Un Rover peut tourner', () => {
+        test.each([
+            { orientationInitiale: Orientation.Nord, action: 'gauche', orientationFinale: Orientation.Ouest },
+            { orientationInitiale: Orientation.Ouest, action: 'gauche', orientationFinale: Orientation.Sud },
+            { orientationInitiale: Orientation.Sud, action: 'gauche', orientationFinale: Orientation.Est },
+            { orientationInitiale: Orientation.Est, action: 'gauche', orientationFinale: Orientation.Nord },
+            { orientationInitiale: Orientation.Nord, action: 'droite', orientationFinale: Orientation.Est },
+            { orientationInitiale: Orientation.Est, action: 'droite', orientationFinale: Orientation.Sud },
+            { orientationInitiale: Orientation.Sud, action: 'droite', orientationFinale: Orientation.Ouest },
+            { orientationInitiale: Orientation.Ouest, action: 'droite', orientationFinale: Orientation.Nord },
+        ])(
+            'ETANT DONNE un Rover orienté $orientationInitiale QUAND il tourne à $action ALORS son orientation est $orientationFinale',
+            ({ orientationInitiale, action, orientationFinale }) => {
+                const roverInitial = new Rover(new Point(), orientationInitiale);
+                let roverFinal = roverInitial;
+                if (action === 'gauche') roverFinal = roverFinal.TournerAGauche();
+                if (action === 'droite') roverFinal = roverFinal.TournerADroite();
+                expect(roverFinal.Orientation).toEqual(orientationFinale);
+            }
+        );
+    });
+    
  });
