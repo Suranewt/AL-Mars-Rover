@@ -1,6 +1,7 @@
 import {Rover} from "../src/rover";
 import {Orientation} from "../src/orientation";
 import {Point} from "../src/point";
+import { Obstacle } from "../src/obstacle";
 
 describe('Un Rover peut avancer', () => {
      test.each([1, 2])(
@@ -109,5 +110,17 @@ describe('Un Rover peut avancer', () => {
             }
         );
     });
+    describe('Le Rover peut détecter des obstacles', () => {
+        test('Le Rover s\'arrête devant un obstacle', () => {
+            const startingPosition = new Point(0, 0);
+            const obstaclePosition = new Point(0, 1); // Position directly in front of the Rover
+            const rover = new Rover(startingPosition, Orientation.Nord);
+            rover.setObstacles([new Obstacle(obstaclePosition)]); // Placing an obstacle in the Rover's path
     
+            const roverFinal = rover.Avancer();
+    
+            // Verify the Rover has not moved from its initial position due to the obstacle
+            expect(roverFinal.Position).toEqual(startingPosition); // This should now correctly reflect expectations
+        });
+    });
  });
