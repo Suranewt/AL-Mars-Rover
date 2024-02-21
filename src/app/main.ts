@@ -1,10 +1,12 @@
 import { Orientation } from './Orientation';
+import { Point } from './Point';
 import { Rover } from './Rover';
 
-const ROVER = new Rover(0, 0, Orientation.Nord);
+const POSITION = new Point(0, 0);
+let ROVER = new Rover(POSITION, Orientation.Nord);
 
-ROVER.avancer(8);
-ROVER.tournerDroite();
-ROVER.reculer(4);
+ROVER = ROVER.avancer();
+ROVER = ROVER.tournerDroite();
+ROVER = ROVER.reculer();
 
 console.log(ROVER.getPosition());
