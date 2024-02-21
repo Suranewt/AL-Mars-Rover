@@ -1,17 +1,14 @@
+import { point } from './point';
+
 class Rover {
 
-    private x : number;
-    private y : number;
     private direction : String;;
-    private position : String;
-    private distance : number;
+    private point : String;
 
 
-    public constructor (direction : String, x : number,y : number, position : String) {
-        this.x = x;
-        this.y = y;
+    public constructor (direction : String, x : number,y : number, point : String) {
         this.direction = direction;
-        this.position = position;
+        this.point = point;
     }
 
     public Avancer(direction : String, x : number,y : number, distance : number) {
@@ -66,7 +63,7 @@ class Rover {
     }
 
     public getPosition(x: number, y: number, direction: string) {
-        return x + " " + y + " " + direction;
+        return "position X :" + x + "position Y :" + y + "Direction :" + direction;
     }
 
 }
